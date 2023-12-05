@@ -15,8 +15,6 @@ import traceback
 # browser = lib_chrome.browser
 # driver  = browser
 
-# print('  2021-01-17' )
-
 def f_ytdl():
   os.system('./Graph/bin/youtube-dl '+ S.pop() )
 
@@ -76,7 +74,6 @@ def f_split(): # string.split
 def f_m1w(): # merge 1 word to string
   w = S.pop()
   S.append( S.pop() + w )
-
 
 # S.append(['X', 'who_is', 'Y'])  ## input must be list, then f('mmn:')
 def f_mmn(): # multi level make node
@@ -159,7 +156,6 @@ def f_wn():
       with open(D+'/'+k, 'a') as the_file:
         the_file.write(N[k])
 
-
 def f_wl(): # write leave node
       with open(S.pop(), 'a') as the_file:
         the_file.write(S.pop())        
@@ -230,26 +226,15 @@ def SM_n(s):  # nested SM use T
   # print( '  SM_n t_i in vars()', 't_i' in vars() )
   
   if (len(T)==0):
-    # if ('t_i' in vars()):
-    #  print('  t_i ',t_i)
-  # else:
     t_i = 0
   
-  # if ('i' in vars()):
-  #  print('  i ',i)
-    
-  # if (not ('t_i' in vars())):
-  #  t_i = 0
-
   T.append([t,t_i]); VC += 1;
   # print( '\n\n  SM token array VC T ', VC, T )
   L = len(t)
   i = 0
-  while i<L and VC<5:
+  while i<L: # and VC<5:
     t_i = i  # i = t_i at end of loop caused i to be referenced to t_i, no longer local variable?
-    # print( '  SM_n while start t_i in vars()', 't_i' in vars() )
-    # print( '\n  SM_n while start t_i VC ', t_i, VC, T )
-    # traceback.print_stack()
+
     if ( t[i][-1]==':'):
       Lt=len(t[i])
       # print( 'is :', 'f_'+t[i][0:Lt-1])
@@ -317,7 +302,6 @@ def SM_n(s):  # nested SM use T
   '''
   
 f=SM_n
-# s=S
 
 # 20230602
 # f("h_1840 fi: array: map: len:")
@@ -356,13 +340,6 @@ def f_ix(): # i element of list (array) no pop
   
 def is_int(val):
    return val.lstrip("-+").isdigit()
-
-# must not have 2 line breaks, will stop function def in interpreter mode
-  
-# SM("pvk.txt fi:")
-# print(S)
-# print( globals().keys() )
-# print( dir( lib_aesgcm ) )
 
 '''
 for key in list(globals().keys()):   # iter on both keys and values
